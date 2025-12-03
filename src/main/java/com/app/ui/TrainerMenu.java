@@ -1,13 +1,13 @@
 // File: src/main/java/com/gym/ui/TrainerMenu.java
 package com.app.ui;
 
-import com.gym.model.GymMerch;
-import com.gym.model.Membership;
-import com.gym.model.User;
-import com.gym.model.WorkoutClass;
-import com.gym.service.GymMerchService;
-import com.gym.service.MembershipService;
-import com.gym.service.WorkoutClassService;
+import com.app.model.GymMerch;
+import com.app.model.Membership;
+import com.app.model.User;
+import com.app.model.WorkoutClass;
+import com.app.service.GymMerchService;
+import com.app.service.MembershipService;
+import com.app.service.WorkoutClassService;
 
 import java.sql.Timestamp;
 import java.util.List;

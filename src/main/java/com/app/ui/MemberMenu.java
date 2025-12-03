@@ -1,14 +1,13 @@
 // File: src/main/java/com/gym/ui/MemberMenu.java
 package com.app.ui;
 
-import com.app.model.GymMerch;
+import com.app.model.Merch;
 import com.app.model.Membership;
 import com.app.model.User;
 import com.app.model.WorkoutClass;
 import com.app.service.GymMerchService;
 import com.app.service.MembershipService;
 import com.app.service.WorkoutClassService;
-
 import java.util.List;
 import java.util.Scanner;
 
