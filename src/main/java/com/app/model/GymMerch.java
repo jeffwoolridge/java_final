@@ -1,14 +1,14 @@
 // File: src/main/java/com/gym/model/GymMerch.java
 package com.app.model;
 
-public class Merch {
+public class GymMerch {
     private int merchId;
     private String merchName;
     private String merchType;
     private double merchPrice;
     private int quantityInStock;
 
-    public Merch(int merchId, String merchName, String merchType,
+    public GymMerch(int merchId, String merchName, String merchType,
                     double merchPrice, int quantityInStock) {
         this.merchId = merchId;
         this.merchName = merchName;

@@ -1,7 +1,7 @@
 // File: src/main/java/com/gym/ui/MemberMenu.java
 package com.app.ui;
 
-import com.app.model.Merch;
+import com.app.model.GymMerch;
 import com.app.model.Membership;
 import com.app.model.User;
 import com.app.model.WorkoutClass;

@@ -1,24 +1,33 @@
-// Main.java
+package com.app;
+
 import java.util.Scanner;
 
+import com.app.model.User;
+import com.app.service.UserService;
+import com.app.ui.AdminMenu;
+import com.app.ui.MemberMenu;
+import com.app.ui.TrainerMenu;
+import com.app.util.Logger;
+
 public class Main {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         UserService userService = new UserService();
         Logger logger = Logger.getInstance();
-        
+
         logger.log("Application started");
-        
+
         while (true) {
             System.out.println("\n=== Gym Management System ===");
             System.out.println("1. Register");
             System.out.println("2. Login");
             System.out.println("3. Exit");
             System.out.print("Choose an option: ");
-            
+
             int choice = scanner.nextInt();
             scanner.nextLine();
-            
+
             switch (choice) {
                 case 1:
                     registerUser(scanner, userService);
@@ -35,24 +44,25 @@ public class Main {
             }
         }
     }
-    
+
     private static void registerUser(Scanner scanner, UserService userService) {
         System.out.println("\n=== User Registration ===");
+
         System.out.print("Username: ");
         String username = scanner.nextLine();
-        
+
         System.out.print("Password: ");
         String password = scanner.nextLine();
-        
+
         System.out.print("Email: ");
         String email = scanner.nextLine();
-        
+
         System.out.print("Phone Number: ");
         String phone = scanner.nextLine();
-        
+
         System.out.print("Address: ");
         String address = scanner.nextLine();
-        
+
         System.out.println("Select Role:");
         System.out.println("1. Admin");
         System.out.println("2. Trainer");
@@ -60,8 +70,8 @@ public class Main {
         System.out.print("Choice: ");
         int roleChoice = scanner.nextInt();
         scanner.nextLine();
-        
-        String role = "";
+
+        String role;
         switch (roleChoice) {
             case 1: role = "ADMIN"; break;
             case 2: role = "TRAINER"; break;
@@ -70,25 +80,27 @@ public class Main {
                 System.out.println("Invalid role!");
                 return;
         }
-        
+
         User user = new User(0, username, password, email, phone, address, role);
+
         if (userService.registerUser(user)) {
             System.out.println("Registration successful!");
         } else {
             System.out.println("Registration failed!");
         }
     }
-    
+
     private static void loginUser(Scanner scanner, UserService userService) {
         System.out.println("\n=== Login ===");
+
         System.out.print("Username: ");
         String username = scanner.nextLine();
-        
+
         System.out.print("Password: ");
         String password = scanner.nextLine();
-        
+
         User user = userService.login(username, password);
-        
+
         if (user != null) {
             System.out.println("Login successful! Welcome, " + user.getUsername());
             showRoleMenu(scanner, user);
@@ -96,7 +108,7 @@ public class Main {
             System.out.println("Invalid credentials!");
         }
     }
-    
+
     private static void showRoleMenu(Scanner scanner, User user) {
         switch (user.getRole()) {
             case "ADMIN":

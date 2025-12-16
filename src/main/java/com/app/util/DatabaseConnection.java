@@ -1,5 +1,5 @@
 // File: src/main/java/com/gym/util/DatabaseConnection.java
-package com.gym.util;
+package com.app.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

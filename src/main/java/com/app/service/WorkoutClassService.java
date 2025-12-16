@@ -1,10 +1,10 @@
 // File: src/main/java/com/gym/service/WorkoutClassService.java
-package com.gym.service;
-
-import com.gym.dao.WorkoutClassDAO;
-import com.gym.model.WorkoutClass;
+package com.app.service;
 
 import java.util.List;
+
+import com.app.dao.WorkoutClassDAO;
+import com.app.model.WorkoutClass;
 
 public class WorkoutClassService {
     private WorkoutClassDAO workoutClassDAO;

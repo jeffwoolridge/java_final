@@ -1,10 +1,10 @@
 // File: src/main/java/com/gym/service/MembershipService.java
-package com.gym.service;
-
-import com.gym.dao.MembershipDAO;
-import com.gym.model.Membership;
+package com.app.service;
 
 import java.util.List;
+
+import com.app.dao.MembershipDAO;
+import com.app.model.Membership;
 
 public class MembershipService {
     private MembershipDAO membershipDAO;

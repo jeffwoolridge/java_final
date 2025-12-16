@@ -1,10 +1,10 @@
-// File: src/main/java/com/gym/service/UserService.java
-package com.gym.service;
+// File: src/main/java/com/app/service/UserService.java
+package com.app.service;
 
-import com.gym.dao.UserDAO;
-import com.gym.model.User;
-import com.gym.util.Logger;
-import com.gym.util.PasswordUtil;
+import com.app.dao.UserDAO;
+import com.app.model.User;
+import com.app.util.Logger;
+import com.app.util.PasswordUtil;
 
 import java.util.List;
 

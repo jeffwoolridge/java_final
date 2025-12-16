@@ -13,3 +13,4 @@ public class Member extends User {
     public void viewMembershipExpenses() {
         System.out.println("Viewing membership expenses...");
     }
+}

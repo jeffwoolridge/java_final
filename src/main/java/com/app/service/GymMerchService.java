@@ -1,8 +1,8 @@
 // File: src/main/java/com/gym/service/GymMerchService.java
-package com.gym.service;
+package com.app.service;
 
-import com.gym.dao.GymMerchDAO;
-import com.gym.model.GymMerch;
+import com.app.dao.GymMerchDAO;
+import com.app.model.GymMerch;
 
 import java.util.List;
 
