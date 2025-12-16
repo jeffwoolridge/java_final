@@ -12,6 +12,7 @@ import com.app.util.Logger;
 public class Main {
 
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
         UserService userService = new UserService();
         Logger logger = Logger.getInstance();
