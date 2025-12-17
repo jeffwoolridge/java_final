@@ -58,7 +58,9 @@ public class DatabaseConnection {
         }
     }
     
-    /**
+
+
+      /**
      * Test database connection
      * @return true if connection is successful
      */

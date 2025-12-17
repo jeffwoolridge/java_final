@@ -13,24 +13,49 @@ public class UserService {
         this.userDAO = new UserDAO();
     }
 
+    /**
+     * Register a new user
+     * Hashes the password before saving
+     */
     public boolean registerUser(User user) {
-        // Hash password before storing
-        user.setPassword(PasswordUtil.hashPassword(user.getPassword()));
+        // Hash the password
+        String hashedPassword = PasswordUtil.hashPassword(user.getPassword());
+        user.setPassword(hashedPassword);
         return userDAO.createUser(user);
     }
 
-    public User loginUser(String username, String password) {
+    /**
+     * Login user
+     * Checks password using BCrypt
+     */
+    public User loginUser(String username, String plainPassword) {
         User user = userDAO.getUserByUsername(username);
-        if (user != null && PasswordUtil.checkPassword(password, user.getPassword())) {
-            return user;
+        if (user != null) {
+            boolean matched = PasswordUtil.checkPassword(plainPassword, user.getPassword());
+            if (matched) {
+                return user;
+            }
         }
         return null;
     }
 
+    /**
+     * Get all users (for Admin)
+     */
+    public java.util.List<User> getAllUsers() {
+        return userDAO.getAllUsers();
+    }
+
+    /**
+     * Update user info
+     */
     public boolean updateUser(User user) {
         return userDAO.updateUser(user);
     }
 
+    /**
+     * Delete user by ID
+     */
     public boolean deleteUser(int userId) {
         return userDAO.deleteUser(userId);
     }
