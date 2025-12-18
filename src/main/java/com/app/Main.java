@@ -1,13 +1,13 @@
 // === Main.java ===
 package com.app;
 
+import java.util.Scanner;
+
 import com.app.model.User;
 import com.app.service.UserService;
 import com.app.ui.AdminMenu;
-import com.app.ui.TrainerMenu;
 import com.app.ui.MemberMenu;
-
-import java.util.Scanner;
+import com.app.ui.TrainerMenu;
 
 public class Main {
 
@@ -19,7 +19,7 @@ public static void main(String[] args) {
 
     while (running) {
         System.out.println("\n=== Gym Management System ===");
-        System.out.println("1. Register");
+     System.out.println("1. Register");
         System.out.println("2. Login");
         System.out.println("3. Exit");
         System.out.print("Choose an option: ");
