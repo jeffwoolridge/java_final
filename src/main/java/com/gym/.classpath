@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+    <classpathentry kind="src" path="src/main/java"/>
+    <classpathentry kind="lib" path="lib/jbcrypt-0.4.jar"/>
+    <classpathentry kind="lib" path="lib/postgresql-42.7.8.jar"/>
+    <classpathentry kind="output" path="target/classes"/>
+</classpath>
