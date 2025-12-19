@@ -13,25 +13,30 @@ import com.gym.util.DBUtil;
 
 public class UserDAO {
 
-    public boolean createUser(User user) {
-        String sql = "INSERT INTO users (username, password, email, phone_number, address, role) VALUES (?, ?, ?, ?, ?, ?)";
-        try (Connection conn = DBUtil.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+ public boolean createUser(User user) {
+    String sql = """
+        INSERT INTO users (username, password, email, phone, address, role)
+        VALUES (?, ?, ?, ?, ?, ?)
+        """;
 
-            ps.setString(1, user.getUsername());
-            ps.setString(2, user.getPasswordHash());
-            ps.setString(3, user.getEmail());
-            ps.setString(4, user.getPhoneNumber());
-            ps.setString(5, user.getAddress());
-            ps.setString(6, user.getRole());
+    try (Connection conn = DBUtil.getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            int result = ps.executeUpdate();
-            return result > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
+        ps.setString(1, user.getUsername());
+        ps.setString(2, user.getPasswordHash());
+        ps.setString(3, user.getEmail());
+        ps.setString(4, user.getPhoneNumber());
+        ps.setString(5, user.getAddress());
+        ps.setString(6, user.getRole());
+
+        return ps.executeUpdate() > 0;
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
     }
+}
+
 
     public User getUserByUsername(String username) {
         String sql = "SELECT * FROM users WHERE username = ?";
@@ -50,7 +55,7 @@ public class UserDAO {
 
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
-        String sql = "SELECT * FROM users ORDER BY user_id";
+        String sql = "SELECT * FROM users ORDER BY id";
         try (Connection conn = DBUtil.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
@@ -65,7 +70,7 @@ public class UserDAO {
     }
 
     public boolean deleteUser(int userId) {
-        String sql = "DELETE FROM users WHERE user_id = ?";
+        String sql = "DELETE FROM users WHERE id = ?";
         try (Connection conn = DBUtil.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
@@ -80,11 +85,11 @@ public class UserDAO {
 
     private User extractUserFromResultSet(ResultSet rs) throws SQLException {
         return new User(
-                rs.getInt("user_id"),
+                rs.getInt("id"),
                 rs.getString("username"),
                 rs.getString("password"),
                 rs.getString("email"),
-                rs.getString("phone_number"),
+                rs.getString("phone"),
                 rs.getString("address"),
                 rs.getString("role")
         );
