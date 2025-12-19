@@ -1,9 +1,9 @@
 package com.gym.service;
 
+import java.util.List;
+
 import com.gym.dao.GymMerchDAO;
 import com.gym.model.GymMerch;
-
-import java.util.List;
 
 public class GymMerchService {
 

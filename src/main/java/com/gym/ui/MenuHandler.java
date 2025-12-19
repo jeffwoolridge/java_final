@@ -1,10 +1,10 @@
 package com.gym.ui;
 
+import java.util.Scanner;
+
 import com.gym.model.User;
 import com.gym.service.UserService;
 import com.gym.util.Logger;
-
-import java.util.Scanner;
 
 public class MenuHandler {
     private final Scanner scanner;

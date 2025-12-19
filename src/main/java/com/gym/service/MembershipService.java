@@ -6,10 +6,14 @@ import com.gym.dao.MembershipDAO;
 import com.gym.model.Membership;
 
 public class MembershipService {
-    private final MembershipDAO dao = new MembershipDAO();
+    private final MembershipDAO dao;
+
+    public MembershipService() {
+        this.dao = new MembershipDAO();
+    }
 
     public boolean purchaseMembership(Membership membership) {
-        return dao.addMembership(membership, membership.getUserId());
+        return dao.addMembership(membership);
     }
 
     public List<Membership> getMembershipsByUserId(int userId) {
@@ -17,8 +21,6 @@ public class MembershipService {
     }
 
     public double getTotalExpensesByUserId(int userId) {
-        return getMembershipsByUserId(userId).stream()
-                .mapToDouble(Membership::getMembershipCost)
-                .sum();
+        return dao.getTotalExpensesByUserId(userId);
     }
 }

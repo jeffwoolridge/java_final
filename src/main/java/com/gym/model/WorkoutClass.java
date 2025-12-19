@@ -8,6 +8,17 @@ public class WorkoutClass {
     private String scheduleTime;
     private int capacity;
 
+    public WorkoutClass() {
+    this.classId = classId;
+    this.classType = classType;
+    this.classDescription = classDescription;
+    this.trainerId = trainerId;
+    this.scheduleTime = scheduleTime;
+    this.capacity = capacity;
+}
+
+ 
+
     // Getters and setters
     public int getClassId() { return classId; }
     public void setClassId(int classId) { this.classId = classId; }

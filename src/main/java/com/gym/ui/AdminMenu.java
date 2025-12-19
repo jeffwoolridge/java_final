@@ -1,12 +1,21 @@
 package com.gym.ui;
 
+import java.util.List;
 import java.util.Scanner;
 
+import com.gym.model.Membership;
 import com.gym.model.User;
+import com.gym.model.WorkoutClass;
+import com.gym.service.MembershipService;
+import com.gym.service.UserService;
+import com.gym.service.WorkoutClassService;
 import com.gym.util.Logger;
 
 public class AdminMenu {
     private final Scanner scanner;
+    private final UserService userService = new UserService();
+    private final WorkoutClassService workoutService = new WorkoutClassService();
+    private final MembershipService membershipService = new MembershipService();
 
     public AdminMenu(Scanner scanner) {
         this.scanner = scanner;
@@ -53,23 +62,56 @@ public class AdminMenu {
     }
 
     private void viewAllUsers() {
-        // Placeholder: call UserService to get all users
-        System.out.println("Viewing all users (functionality to implement)");
+        List<User> users = userService.getAllUsers();
+        System.out.println("\n--- All Users ---");
+        for (User u : users) {
+            System.out.printf("ID: %d | Username: %s | Email: %s | Role: %s%n",
+                    u.getUserId(), u.getUsername(), u.getEmail(), u.getRole());
+        }
     }
 
     private void addWorkoutClass() {
-        // Placeholder: call WorkoutClassService to add class
-        System.out.println("Adding workout class (functionality to implement)");
+        WorkoutClass wc = new WorkoutClass();
+
+        System.out.print("Class Type: ");
+        wc.setClassType(scanner.nextLine());
+
+        System.out.print("Class Description: ");
+        wc.setClassDescription(scanner.nextLine());
+
+        System.out.print("Trainer ID: ");
+        wc.setTrainerId(getIntInput());
+
+        System.out.print("Schedule Time (e.g., 2025-12-20 10:00): ");
+        wc.setScheduleTime(scanner.nextLine());
+
+        System.out.print("Capacity: ");
+        wc.setCapacity(getIntInput());
+
+        if (workoutService.addWorkoutClass(wc)) {
+            System.out.println("✓ Workout class added successfully!");
+        } else {
+            System.out.println("✗ Failed to add workout class.");
+        }
     }
 
     private void deleteWorkoutClass() {
-        // Placeholder: call WorkoutClassService to delete class
-        System.out.println("Deleting workout class (functionality to implement)");
+        System.out.print("Enter Workout Class ID to delete: ");
+        int id = getIntInput();
+        if (workoutService.deleteWorkoutClass(id)) {
+            System.out.println("✓ Workout class deleted successfully!");
+        } else {
+            System.out.println("✗ Failed to delete workout class.");
+        }
     }
 
     private void viewAllMemberships() {
-        // Placeholder: call MembershipService to view all memberships
-        System.out.println("Viewing all memberships (functionality to implement)");
+        List<Membership> memberships = membershipService.getAllMemberships();
+        System.out.println("\n--- All Memberships ---");
+        for (Membership m : memberships) {
+            System.out.printf("ID: %d | Type: %s | Cost: %.2f | User ID: %d%n",
+                    m.getMembershipId(), m.getMembershipType(), m.getMembershipCost(), m.getUserId());
+        }
     }
 
     private int getIntInput() {
